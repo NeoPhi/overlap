@@ -4,13 +4,18 @@ if (process.argv.length < 3) {
 }
 
 var _ = require('underscore');
+var async = require('async');
 
-var dynode = require('dynode');
-
-dynode.auth({
-  accessKeyId: process.env.AWS_ACCESS_KEY,
-  secretAccessKey: process.env.AWS_SECRET_KEY
+var mongoose = require('mongoose');
+mongoose.connect('mongodb://localhost/imdb', function(err) {
+  if (err) {
+    console.error('MONGO', err);
+    process.exit(1);
+  }
+  console.log('MONGO', 'Connected');
 });
+
+var Title = require('../src/models/title').model;
 
 var fs = require('fs');
 
@@ -97,12 +102,7 @@ var inputHandler = function() {
           console.log('PAUSE');
           input.pause();
         }
-        var updates = {
-          names: {
-            add: [currentName]
-          }
-        };
-        dynode.updateItem('Titles', title, updates, complete);
+        Title.ensureCast(title, currentName, complete);
       }
     }
   };
