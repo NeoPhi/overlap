@@ -15,7 +15,8 @@ mongoose.connect('mongodb://localhost/imdb', function(err) {
   console.log('MONGO', 'Connected');
 });
 
-var Title = require('../src/models/title').model;
+var models = require('../src/models/');
+var Title = models.Title;
 
 var fs = require('fs');
 

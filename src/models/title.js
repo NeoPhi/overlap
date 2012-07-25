@@ -16,6 +16,12 @@ Title.index({
   unique: true
 });
 
+Title.statics.findByName = function(name, callback) {
+  TitleModel.findOne({
+    name: name
+  }, callback);
+};
+
 Title.statics.ensureCast = function(name, castName, callback) {
   var conditions = {
     name: name

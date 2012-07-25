@@ -24,6 +24,8 @@
   "main": "./src/index.js",
   "dependencies": {
     "async": "0.1.22",
+    "express": "2.5.11",
+    "express-resource": "0.2.4",
     "mongodb": "1.0.2",
     "mongoose": "2.7.2",
     "underscore": "1.3.3"
@@ -37,6 +39,7 @@
     "node": ">= 0.8.0"
   },
   "scripts": {
+    "start": "node src/server.js",
     "pretest": "jshint src --config config/jshint.src.json && jshint test tools --config config/jshint.test.json",
     "test": "jasmine-node --junitreport test",
     "posttest": "node tools/tabCheck.js",
