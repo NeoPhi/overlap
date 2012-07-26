@@ -7,8 +7,10 @@ var renderCast = function(targetField, castNames) {
   var target = $(targetField);
   var html = '';
   _.each(castNames, function(castName) {
+    var castSearch = castName.replace(/\s\([^\)]+\)/g, '');
     html += castRow({
-      castName: castName
+      castName: castName,
+      castSearch: encodeURIComponent(castSearch).replace(/%20/g, '+')
     });
   });
   target.html(html);
