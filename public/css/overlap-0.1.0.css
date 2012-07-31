@@ -1,0 +1,11 @@
+.header {
+  text-align: center;  
+}
+
+body {
+  padding-bottom: 40px;
+}
+
+.navbar-inner .container {
+  padding-top: 10px;
+}

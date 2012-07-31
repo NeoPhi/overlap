@@ -1,4 +1,7 @@
-build
-node_modules
-reports
+/node_modules
 npm-debug.log
+/reports
+/target
+/.classpath
+/.project
+/.settings

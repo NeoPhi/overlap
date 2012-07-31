@@ -3,30 +3,37 @@ var Schema = mongoose.Schema;
 
 var TitleModel;
 var Title = new Schema({
+  _id: {
+    type: String,
+    required: true
+  },
   name: {
+    type: String,
+    required: true
+  },
+  year: {
+    type: String,
+    required: true
+  },
+  type: {
     type: String,
     required: true
   },
   cast: [String]
 });
 
-Title.index({
-  name: 1
-}, {
-  unique: true
-});
-
-Title.statics.findByName = function(name, callback) {
-  TitleModel.findOne({
-    name: name
-  }, callback);
-};
-
-Title.statics.ensureCast = function(name, castName, callback) {
+Title.statics.ensureTitleAndCast = function(id, name, year, type, castName, callback) {
+  // Ensure we don't get any id collisions
   var conditions = {
+    _id: id,
     name: name
   };
   var update = {
+    $set: {
+      name: name,
+      year: year,
+      type: type
+    },
     $addToSet: {
       cast: castName
     }

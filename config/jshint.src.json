@@ -7,7 +7,7 @@
     // Predefined globals whom JSHint will ignore.
     "browser"       : false,   // Standard browser globals e.g. `window`, `document`.
 
-    "node"          : true,
+    "node"          : false,
     "rhino"         : false,
     "couch"         : false,
     "wsh"           : false,   // Windows Scripting Host.
@@ -18,11 +18,9 @@
     "dojo"          : false,
 
     "predef"        : [  // Custom globals.
-        "Exception",
-        "jasmine",
-        "java",
-        "top",
-        "__phantom_writeFile"
+        "module",
+        "process",
+        "require"
     ],
 
 

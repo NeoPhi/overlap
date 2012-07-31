@@ -1,6 +1,7 @@
 var express = require('express');
 var expressResource = require('express-resource');
 var mongoose = require('mongoose');
+var winston = require('winston');
 
 var app = express.createServer();
 
@@ -12,16 +13,16 @@ app.use(express['static']('./public'));
 
 app.listen(3000, function(err) {
   if (err) {
-    console.error(err);
+    winston.error(err);
     process.exit(1);
   }
-  console.log('Server started');
+  winston.info('Server started');
 });
 
 mongoose.connect('mongodb://localhost/imdb', function(err) {
   if (err) {
-    console.error(err);
+    winston.error(err);
     process.exit(1);
   }
-  console.log('Connected to Mongo');
+  winston.info('Connected to Mongo');
 });
